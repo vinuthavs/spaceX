@@ -33,6 +33,7 @@ export class AppComponent implements OnInit {
     Object.keys(this.requestData).forEach((key) => {
       params = params.append(key, this.requestData[key]);
     });
+    window.history.replaceState(null, '', params.toString());
     this.subscription.add(this.appService.fetchSpaceRecords(params).subscribe(res => {
       if(Object.keys(res).length !== 0) {
         this.spaceData = res;
